@@ -65,8 +65,3 @@ function checkAnswer(selected) {
     }, 1000);
 }
 window.onload = loadQuestion;
-document.getElementById("quiz-box").innerHTML = `
-    <h2>🎉 Quiz Completed!</h2>
-    <p>Your Score: ${score}/${quiz.length}</p>
-    <button onclick="location.reload()">Restart Quiz</button>
-`;
