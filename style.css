@@ -1,0 +1,11 @@
+body{
+    font-family: Arial;
+    text-align: center;
+    background: #f4f4f4;
+}
+section{
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
