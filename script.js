@@ -28,6 +28,8 @@ const quiz = [
 let currentQ = 0;
 let score = 0;
 function loadQuestion() {
+    document.getElementById("progress").innerText =
+    `Question ${currentQ + 1} / ${quiz.length}`;
     let q = quiz[currentQ];
     document.getElementById("question").innerText = q.question;
 
@@ -37,6 +39,14 @@ function loadQuestion() {
     });
 }
 function checkAnswer(selected) {
+    let buttons = document.querySelectorAll(".option");
+    buttons.forEach((btn, index) => {
+    if(index === quiz[currentQ].answer){
+        btn.style.background = "green";
+    } else {
+        btn.style.background = "red";
+    }
+});
     if (selected === quiz[currentQ].answer) {
         score++;
         document.getElementById("result").innerText = "✅ Correct!";
@@ -46,7 +56,6 @@ function checkAnswer(selected) {
     currentQ++;
     setTimeout(() => {
         document.getElementById("result").innerText = "";
-        
         if (currentQ < quiz.length) {
             loadQuestion();
         } else {
@@ -56,3 +65,8 @@ function checkAnswer(selected) {
     }, 1000);
 }
 window.onload = loadQuestion;
+document.getElementById("quiz-box").innerHTML = `
+    <h2>🎉 Quiz Completed!</h2>
+    <p>Your Score: ${score}/${quiz.length}</p>
+    <button onclick="location.reload()">Restart Quiz</button>
+`;
